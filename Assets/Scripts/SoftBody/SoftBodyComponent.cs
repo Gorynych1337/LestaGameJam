@@ -1,14 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.XR;
-using static UnityEngine.GraphicsBuffer;
 
-public class SoftBody : MonoBehaviour
+public class SoftBodyComponent : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D midBone;
-    [SerializeField, Tooltip("Работает только для чётных количеств")] private List<Rigidbody2D> boneList;
+    [SerializeField, Tooltip("Only for even numbers")] private List<Rigidbody2D> boneList;
     [SerializeField] private float solidFrequency;
     [SerializeField] private float liquidFrequency;
 
@@ -32,7 +29,8 @@ public class SoftBody : MonoBehaviour
     private void SettingSpring(SpringJoint2D spring, Rigidbody2D body, bool isInner)
     {
         spring.connectedBody = body;
-        spring.frequency = isInner ? liquidFrequency : liquidFrequency * 3;
+        spring.frequency = isInner ? liquidFrequency : liquidFrequency * 100;
+        spring.dampingRatio = isInner ? 0 : 1;
     }
 
     public void CreateMidBoneSprings()
@@ -62,14 +60,14 @@ public class SoftBody : MonoBehaviour
     }
 }
 
-[CustomEditor(typeof(SoftBody))]
+[CustomEditor(typeof(SoftBodyComponent))]
 [CanEditMultipleObjects]
 class DecalMeshHelperEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-        var script = target as SoftBody;
+        var script = target as SoftBodyComponent;
 
         if (GUILayout.Button("Generate springs"))
         {
