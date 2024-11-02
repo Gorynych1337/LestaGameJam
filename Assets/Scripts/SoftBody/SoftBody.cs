@@ -9,28 +9,36 @@ public class SoftBody : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D midBone;
     [SerializeField, Tooltip("Работает только для чётных количеств")] private List<Rigidbody2D> boneList;
-    [SerializeField] private float frequency;
-    [SerializeField] private float distance;
+    [SerializeField] private float solidFrequency;
+    [SerializeField] private float liquidFrequency;
 
-    /*private void Update()
+    private List<SpringJoint2D> innerJoints;
+
+    private void Awake()
     {
-        boneList.ForEach(bone => {
-            Vector3 Look = bone.transform.InverseTransformPoint(midBone.transform.position);
-            float Angle = Mathf.Atan2(Look.y, Look.x) * Mathf.Rad2Deg;
-            bone.transform.Rotate(0, 0, Angle);
-        });
-    }*/
+        CreateMidBoneSprings();
+    }
 
-    private void SettingSpring(SpringJoint2D spring, Rigidbody2D body)
+    public void SetSolid()
+    {
+        innerJoints.ForEach(joint => {joint.frequency = solidFrequency;});
+    }
+
+    public void SetLiquid()
+    {
+        innerJoints.ForEach(joint => { joint.frequency = liquidFrequency;});
+    }
+
+    private void SettingSpring(SpringJoint2D spring, Rigidbody2D body, bool isInner)
     {
         spring.connectedBody = body;
-        spring.frequency = frequency;
-        //spring.autoConfigureDistance = false;
-        //spring.distance = distance;
+        spring.frequency = isInner ? liquidFrequency : liquidFrequency * 3;
     }
 
     public void CreateMidBoneSprings()
     {
+        innerJoints = new List<SpringJoint2D>();
+
         for (int i = 0; i < boneList.Count; i++)
         {
             var bone = boneList[i];
@@ -43,11 +51,13 @@ public class SoftBody : MonoBehaviour
 
             var leftSpring = bone.gameObject.AddComponent<SpringJoint2D>();
             var rightSpring = bone.gameObject.AddComponent<SpringJoint2D>();
-            var opositeSpring = bone.gameObject.AddComponent<SpringJoint2D>();
+            var innerSpring = bone.gameObject.AddComponent<SpringJoint2D>();
 
-            SettingSpring(leftSpring, i == 0 ? boneList[boneList.Count - 1] : boneList[i - 1]);
-            SettingSpring(rightSpring, i == boneList.Count - 1 ? boneList[0] : boneList[i + 1]);
-            SettingSpring(opositeSpring, midBone);
+            innerJoints.Add(innerSpring);
+
+            SettingSpring(leftSpring, i == 0 ? boneList[boneList.Count - 1] : boneList[i - 1], false);
+            SettingSpring(rightSpring, i == boneList.Count - 1 ? boneList[0] : boneList[i + 1], false);
+            SettingSpring(innerSpring, midBone, true);
         }
     }
 }
