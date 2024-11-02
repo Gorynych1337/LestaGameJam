@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SettingsData : StorageData<SettingsData>
 {
-    public float masterVolume = 1f;
-    public float musicVolume = 1f;
-    public float SFXVolume = 1f;
+    public float masterVolume = 0.25f;
+    public float musicVolume = 0.25f;
+    public float SFXVolume = 0.25f;
 
     public void UpdateAudioVolume()
     {
