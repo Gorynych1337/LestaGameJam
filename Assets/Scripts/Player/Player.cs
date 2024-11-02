@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _hp;
+    [SerializeField] private float minHP;
+    [SerializeField] private float maxHP;
 
     public float Hp => _hp;
 
@@ -18,6 +20,7 @@ public class Player : MonoBehaviour
     public void GetHealed(float heal)
     {
         _hp += heal;
+        _hp = MathF.Min(maxHP, _hp);
         Resize();
     }
 
@@ -29,7 +32,7 @@ public class Player : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        if (_hp - damage <= 0) Death();
+        if (_hp - damage <= minHP) Death();
         else
         {
             _hp -= damage;
