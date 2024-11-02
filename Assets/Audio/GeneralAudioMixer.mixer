@@ -62,12 +62,18 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: ec067e8d541d3d94e85c5522dfc84136
+    name: Master
+  - guid: 4cdf4492bdf0b03488c304c4d15d6714
+    name: Music
+  - guid: d038e40c33b9ebe469eecd9491e76bcf
+    name: SFX
   m_AudioMixerGroupViews:
   - guids:
     - 8131199fd3463114aac65169a42d8d4a
-    - eb3e39f6e57ab304b9bd7345c48ac1f5
     - a08b664487e5c0b4baf63706f6bcf625
+    - eb3e39f6e57ab304b9bd7345c48ac1f5
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -136,3 +142,17 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &9204439708717796378
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 293d6387688d9e84cac6ce010d7564a0
+  m_EffectName: Send
+  m_MixLevel: 5c805a17d73ef0143acc7f487bf3583d
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
