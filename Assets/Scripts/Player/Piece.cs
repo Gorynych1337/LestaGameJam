@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RockEnemyComponent : MonoBehaviour
+public class Piece : MonoBehaviour
 {
-    [SerializeField] private float _damage;
-
+    [SerializeField] private float _healSize;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.TryGetComponent(out Player target)) return;
-        target.GetDamage(_damage);
+        target.GetHealed(_healSize);
+        Destroy(gameObject);
     }
 }
