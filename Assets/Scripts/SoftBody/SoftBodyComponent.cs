@@ -5,11 +5,12 @@ using UnityEngine;
 public class SoftBodyComponent : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D midBone;
-    [SerializeField, Tooltip("Only for even numbers")] private List<Rigidbody2D> boneList;
+    [SerializeField, Tooltip("Only for even numbers")] private List<Rigidbody2D> boneList ;
     [SerializeField] private float solidFrequency;
     [SerializeField] private float liquidFrequency;
 
-    private List<SpringJoint2D> innerJoints;
+    private readonly List<SpringJoint2D> _innerJoints = new List<SpringJoint2D>();
+    private readonly List<SpringJoint2D> _outerJoints = new List<SpringJoint2D>();
 
     private void Awake()
     {
@@ -18,25 +19,29 @@ public class SoftBodyComponent : MonoBehaviour
 
     public void SetSolid()
     {
-        innerJoints.ForEach(joint => {joint.frequency = solidFrequency;});
+        _innerJoints.ForEach(joint => {joint.frequency = solidFrequency;});
     }
 
     public void SetLiquid()
     {
-        innerJoints.ForEach(joint => { joint.frequency = liquidFrequency;});
+        _innerJoints.ForEach(joint => { joint.frequency = liquidFrequency;});
     }
 
+    public void SetDistance(float distance)
+    {
+        _innerJoints.ForEach(joint => { joint.distance += distance; });
+        _outerJoints.ForEach(joint => { joint.distance += distance; });
+    }
+    
     private void SettingSpring(SpringJoint2D spring, Rigidbody2D body, bool isInner)
     {
         spring.connectedBody = body;
-        spring.frequency = isInner ? liquidFrequency : liquidFrequency * 100;
-        spring.dampingRatio = isInner ? 0 : 1;
+        spring.frequency = isInner ? liquidFrequency : liquidFrequency * 200;
+        spring.dampingRatio = 1;
     }
 
     public void CreateMidBoneSprings()
     {
-        innerJoints = new List<SpringJoint2D>();
-
         for (int i = 0; i < boneList.Count; i++)
         {
             var bone = boneList[i];
@@ -51,7 +56,9 @@ public class SoftBodyComponent : MonoBehaviour
             var rightSpring = bone.gameObject.AddComponent<SpringJoint2D>();
             var innerSpring = bone.gameObject.AddComponent<SpringJoint2D>();
 
-            innerJoints.Add(innerSpring);
+            _innerJoints.Add(innerSpring);
+            _outerJoints.Add(leftSpring);
+            _outerJoints.Add(rightSpring);
 
             SettingSpring(leftSpring, i == 0 ? boneList[boneList.Count - 1] : boneList[i - 1], false);
             SettingSpring(rightSpring, i == boneList.Count - 1 ? boneList[0] : boneList[i + 1], false);

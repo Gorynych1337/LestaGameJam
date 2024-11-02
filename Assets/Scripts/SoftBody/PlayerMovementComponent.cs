@@ -15,6 +15,7 @@ public class PlayerMovementComponent: MonoBehaviour
     private bool _isGrounded;
     private float _lastJumpTime;
     private Inputs _input;
+    private float _size = 0f;
     private bool CanJump => Time.time - _groundedTime > jumpCooldown && _isGrounded;
     
     private void Start()
@@ -35,8 +36,13 @@ public class PlayerMovementComponent: MonoBehaviour
 
     private void FixedUpdate()
     {
-        var value = _input.PlayerMovement.MovementAxis.ReadValue<float>();
+        if (Input.GetKey(KeyCode.E))
+        {
+            _size += 0.001f;
+            softBodyComponent.SetDistance(_size);
+        }
         
+        var value = _input.PlayerMovement.MovementAxis.ReadValue<float>();
         if (value == 0) return;
         rb.velocity = new Vector2(movementForce * value, rb.velocity.y);
     }

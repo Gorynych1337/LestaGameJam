@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuPanel : UIPanel
@@ -20,7 +21,7 @@ public class MainMenuPanel : UIPanel
 
     private void PlayButtonClicked()
     {
-        throw new NotImplementedException();
+        SceneManager.LoadScene(1);
     }
 
     private void SettingsButtonClicked()
