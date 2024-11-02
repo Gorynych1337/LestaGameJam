@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SoundCollection
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
-    clip: {fileID: 0}
+  - name: MenuMusic
+    clip: {fileID: 8300000, guid: 1069db8068d67084f8efd2fed29fd397, type: 3}
