@@ -9,14 +9,26 @@ public class Player : MonoBehaviour
 
     public float Hp => _hp;
 
+    private void Resize()
+    {
+        transform.localScale = Vector3.one * _hp / 100; 
+    }
+
+    public void GetHealed(float heal)
+    {
+        _hp += heal;
+        Resize();
+    }
+
     public void GetDamage(float damage)
     {
-        if (_hp - damage < 0)
-            Debug.LogError($"You died, got damage {damage}, actual hp: {_hp - damage}");
+        if (_hp - damage <= 0)
+            Debug.Log($"You died, got damage {damage}, actual hp: {_hp - damage}");
         else
         {
             _hp -= damage;
-            Debug.LogError($"Actual hp: {_hp}");
+            Resize();
+            Debug.Log($"Actual hp: {_hp}");
         }
     }
 }
