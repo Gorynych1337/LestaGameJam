@@ -12,11 +12,11 @@ public class Player : MonoBehaviour
     public void GetDamage(float damage)
     {
         if (_hp - damage < 0)
-            Debug.LogError($"You died, got damage {damage}, actual hp: {_hp - damage}");
+            Debug.Log($"You died, got damage {damage}, actual hp: {_hp - damage}");
         else
         {
             _hp -= damage;
-            Debug.LogError($"Actual hp: {_hp}");
+            Debug.Log($"Actual hp: {_hp}");
         }
     }
 }

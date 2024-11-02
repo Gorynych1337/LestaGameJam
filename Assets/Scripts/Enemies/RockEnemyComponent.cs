@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TouchEnemy : MonoBehaviour
+public class RockEnemyComponent : MonoBehaviour
 {
     [SerializeField] private float _damage;
 
