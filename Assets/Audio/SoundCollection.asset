@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 739afa2c52554866930c6c73605e5579, type: 3}
   m_Name: SoundCollection
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: MenuMusic
+    clip: {fileID: 8300000, guid: 1069db8068d67084f8efd2fed29fd397, type: 3}
