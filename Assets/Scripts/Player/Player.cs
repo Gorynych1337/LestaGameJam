@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -20,10 +21,15 @@ public class Player : MonoBehaviour
         Resize();
     }
 
+    public void Death()
+    {
+        // Так вообще не нужно, но как заглушка
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void GetDamage(float damage)
     {
-        if (_hp - damage <= 0)
-            Debug.Log($"You died, got damage {damage}, actual hp: {_hp - damage}");
+        if (_hp - damage <= 0) Death();
         else
         {
             _hp -= damage;
