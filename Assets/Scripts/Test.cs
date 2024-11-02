@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
+    [SerializeField] private Vector3 offset;
     private Tweener tween;
     void Start()
     {
-        tween = transform.DOPunchPosition(Vector3.up * 60, 2f, 4)
-            .SetLoops(-1)
-            .SetEase(Ease.Linear);
+        var vec = transform.position + offset;
+        tween = transform.DOMove(vec, 2f)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutQuad);
     }
 }
