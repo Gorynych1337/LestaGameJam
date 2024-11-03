@@ -1362,6 +1362,10 @@ PrefabInstance:
       propertyPath: m_Creator
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4504065045858239596, guid: 6d40e00856177ef4d83137484bcd6ed1, type: 3}
+      propertyPath: liquidFrequency
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
