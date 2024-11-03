@@ -1,5 +1,8 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Flower : MonoBehaviour
@@ -9,6 +12,7 @@ public class Flower : MonoBehaviour
     [SerializeField] private float shotDelay;
     [SerializeField] private float shotCount;
     [SerializeField] private float shootCooldown;
+    [SerializeField] private Animator animator; 
 
     private bool isShooting;
 
@@ -17,7 +21,7 @@ public class Flower : MonoBehaviour
         isShooting = true;
         for (int i = 0; i < shotCount; i++)
         {
-            Shoot();
+            StartCoroutine("Shoot");
             yield return new WaitForSeconds(shotDelay);
         }
 
@@ -25,10 +29,18 @@ public class Flower : MonoBehaviour
         isShooting = false;
     }
 
-    private void Shoot()
+    private void SpawnDrop()
     {
         var drop = Instantiate(dropPrefab, dropSpawn.position, dropSpawn.rotation);
         drop.GetComponent<DropFlight>().Instantiate(dropSpawn.TransformDirection(Vector3.right).normalized);
+    }
+
+    private IEnumerator Shoot()
+    {
+        animator.SetBool("isAttack", true);
+        yield return new WaitForSeconds(animator.runtimeAnimatorController.animationClips.First(a => a.name == "FlowerShot").length);
+        animator.SetBool("isAttack", false);
+        SpawnDrop();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
