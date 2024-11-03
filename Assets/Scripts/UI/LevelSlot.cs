@@ -8,6 +8,7 @@ public class LevelSlot : MonoBehaviour, IDataView<LevelData>
 {
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private Button button;
+    [SerializeField] private string levelSceneName;
     
     private LevelData _data;
     
@@ -30,7 +31,7 @@ public class LevelSlot : MonoBehaviour, IDataView<LevelData>
     public void SetData(LevelData data)
     {
         _data = data;
-        levelText.text = data.levelNumber + "\nLevel";
+        levelText.text = data.levelNumber + "\n" + levelSceneName;
     }
     
     private void OnDestroy()
