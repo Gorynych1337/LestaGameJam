@@ -8,7 +8,7 @@ public class CloudPlatformComponent : MonoBehaviour
 {
     [SerializeField] private Vector3 offset;
     [SerializeField] private float _loopTime;
-    [SerializeField] private float _damage;
+    //[SerializeField] private float _damage;
 
     [SerializeField] private Transform _startTransform;
     [SerializeField] private Transform _endTransform;
@@ -59,11 +59,12 @@ public class CloudPlatformComponent : MonoBehaviour
             .SetEase(Ease.InOutQuad);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Player target))
         {
             target.GetDamage(_damage);
         }
     }
+    */
 }
