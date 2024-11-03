@@ -17,6 +17,7 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     private void Awake()
     {
+        base.Awake();
         DontDestroyOnLoad(this);
         level = GameData.Instance.Level;
     }

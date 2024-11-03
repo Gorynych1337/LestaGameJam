@@ -36,7 +36,7 @@ public class IngameMenuPanel : UIPanel
     private void MainMenuButtonClicked()
     {
         AudioManager.Instance.Play("ButtonClick", AudioType.Sound);
-        Hide();
+        GameManager.Instance.ResumeGame();
         SceneManager.LoadScene(0);
     }
 

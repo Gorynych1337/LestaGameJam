@@ -23,11 +23,12 @@ public class AudioManager : SingletonBehaviour<AudioManager>
     
     private void Awake()
     {
+        base.Awake();
+        
         foreach (var sound in soundCollection.sounds)
         {
             _sounds[sound.name] = sound;
         }
-        
         DontDestroyOnLoad(this);
     }
     
