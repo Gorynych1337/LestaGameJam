@@ -29,7 +29,7 @@ public class SoftBodyComponent : MonoBehaviour
     private void SettingSpring(SpringJoint2D spring, Rigidbody2D body, bool isInner)
     {
         spring.connectedBody = body;
-        spring.frequency = isInner ? liquidFrequency : liquidFrequency * 100;
+        spring.frequency = isInner ? liquidFrequency : liquidFrequency * 200;
         spring.dampingRatio = isInner ? 0 : 1;
     }
 
@@ -60,6 +60,7 @@ public class SoftBodyComponent : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(SoftBodyComponent))]
 [CanEditMultipleObjects]
 class DecalMeshHelperEditor : Editor
@@ -75,3 +76,4 @@ class DecalMeshHelperEditor : Editor
         }
     }
 }
+#endif
