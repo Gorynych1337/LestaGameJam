@@ -8,7 +8,6 @@ public class RockEnemyComponent : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.TryGetComponent(out Player target)) return;
-        target.GetDamage(_damage);
+        if (collision.TryGetComponent(out Player target)) target.GetDamage(_damage);
     }
 }
