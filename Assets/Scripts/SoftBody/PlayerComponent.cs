@@ -20,7 +20,7 @@ public class PlayerComponent: MonoBehaviour
     private float _lastJumpTime;
     private Inputs _input;
     private bool CanJump => Time.time - _groundedTime > jumpCooldown && _isGrounded;
-
+    
     public float Health
     {
         get => health;
