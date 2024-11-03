@@ -15,7 +15,7 @@ public class SplashCreator : MonoBehaviour
             var drop = Instantiate(dropPrefab);
             drop.transform.position = position;
             float angle = i * 180 * Mathf.Deg2Rad / (dropCount - 1);
-            drop.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * splashForce);
+            drop.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * splashForce, ForceMode2D.Impulse);
         }
     }
 }
