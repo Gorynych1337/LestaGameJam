@@ -5,6 +5,7 @@ using UnityEngine;
 public class Flower : MonoBehaviour
 {
     [SerializeField] private GameObject dropPrefab;
+    [SerializeField] private Transform dropSpawn;
     [SerializeField] private float shotDelay;
     [SerializeField] private float shotCount;
     [SerializeField] private float shootCooldown;
@@ -26,10 +27,18 @@ public class Flower : MonoBehaviour
 
     private void Shoot(string temp)
     {
+        var drop = Instantiate(dropPrefab, dropSpawn.position, dropSpawn.rotation);
+        drop.GetComponent<DropFlight>().Instantiate(dropSpawn.TransformDirection(Vector3.right).normalized);
         Debug.Log("Shoot" + temp);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (isShooting) return;
+        StartCoroutine("ShootCorutine");
+    }
+
+    private void Update()
     {
         if (isShooting) return;
         StartCoroutine("ShootCorutine");
