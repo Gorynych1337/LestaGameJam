@@ -14,6 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: MenuMusic
-    clip: {fileID: 8300000, guid: 1069db8068d67084f8efd2fed29fd397, type: 3}
+    clip: {fileID: 8300000, guid: 4dd018ce9f20f03499f8ff2e57eaf325, type: 3}
   - name: ButtonClick
     clip: {fileID: 8300000, guid: 7968026a70932c34dadadd2bd761f433, type: 3}
+  - name: Main_music
+    clip: {fileID: 8300000, guid: 3880c5a888b94534a8c870d89065c0a0, type: 3}
+  - name: Main_ambient
+    clip: {fileID: 8300000, guid: 3880c5a888b94534a8c870d89065c0a0, type: 3}
+  - name: Rock_fall
+    clip: {fileID: 8300000, guid: 4476acc293335c44f8d54ee791fa47be, type: 3}
+  - name: Parrot_1
+    clip: {fileID: 8300000, guid: 789d7bf236cb7624f80326cf83ae8a1a, type: 3}
+  - name: Parrot_2
+    clip: {fileID: 8300000, guid: 90d8153753de7b6499e273d0967e92e4, type: 3}
+  - name: Parrot_3
+    clip: {fileID: 8300000, guid: 49436f55cac22c54cacdd26ace5ebf50, type: 3}
+  - name: Kust
+    clip: {fileID: 8300000, guid: e0f84ae6c778eb9448fed62d91ad5968, type: 3}
+  - name: Damage
+    clip: {fileID: 8300000, guid: 986f92fbe627d6746a2b97ce2f4c015e, type: 3}
+  - name: Death
+    clip: {fileID: 8300000, guid: 00737a73fbbbfd6409e29534090b397e, type: 3}
+  - name: Flowers_atack
+    clip: {fileID: 8300000, guid: 61b9170831e276e4196685f2112f6545, type: 3}
+  - name: Move
+    clip: {fileID: 8300000, guid: 73b82577e5f346440944460891b30c38, type: 3}
+  - name: Vsasivaet
+    clip: {fileID: 8300000, guid: 217a75065677d434ea1615c7db84632c, type: 3}
+  - name: Wood1
+    clip: {fileID: 8300000, guid: 3bcaa602e9c85484390c44cd3fee6f88, type: 3}
+  - name: Wood2
+    clip: {fileID: 8300000, guid: 4d5ba86d2e99ead4ab65105f5a30fe39, type: 3}
