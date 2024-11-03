@@ -20,5 +20,12 @@ namespace Game.Scripts.Utilities
                 return _instance;
             }
         }
+        
+        protected virtual void Awake()
+        {
+            if (_instance == null) return;
+            Destroy(gameObject);
+            return;
+        }
     }
 }

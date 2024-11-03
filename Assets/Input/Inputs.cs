@@ -92,6 +92,34 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerControlls"",
+            ""id"": ""4dd6b681-4ca3-4803-930e-03fbfc4777ef"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""bcdb6b2d-e16e-430c-84d5-d21eb6d79719"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7efaec93-b9dc-4214-8ece-c32cc660e5a6"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -117,11 +145,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_MovementAxis = m_PlayerMovement.FindAction("MovementAxis", throwIfNotFound: true);
         m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
+        // PlayerControlls
+        m_PlayerControlls = asset.FindActionMap("PlayerControlls", throwIfNotFound: true);
+        m_PlayerControlls_Pause = m_PlayerControlls.FindAction("Pause", throwIfNotFound: true);
     }
 
     ~@Inputs()
     {
         UnityEngine.Debug.Assert(!m_PlayerMovement.enabled, "This will cause a leak and performance issues, Inputs.PlayerMovement.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayerControlls.enabled, "This will cause a leak and performance issues, Inputs.PlayerControlls.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -233,6 +265,52 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         }
     }
     public PlayerMovementActions @PlayerMovement => new PlayerMovementActions(this);
+
+    // PlayerControlls
+    private readonly InputActionMap m_PlayerControlls;
+    private List<IPlayerControllsActions> m_PlayerControllsActionsCallbackInterfaces = new List<IPlayerControllsActions>();
+    private readonly InputAction m_PlayerControlls_Pause;
+    public struct PlayerControllsActions
+    {
+        private @Inputs m_Wrapper;
+        public PlayerControllsActions(@Inputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_PlayerControlls_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerControlls; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerControllsActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerControllsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerControllsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerControllsActionsCallbackInterfaces.Add(instance);
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+        }
+
+        private void UnregisterCallbacks(IPlayerControllsActions instance)
+        {
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+        }
+
+        public void RemoveCallbacks(IPlayerControllsActions instance)
+        {
+            if (m_Wrapper.m_PlayerControllsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayerControllsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerControllsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerControllsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlayerControllsActions @PlayerControlls => new PlayerControllsActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -246,5 +324,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     {
         void OnMovementAxis(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+    }
+    public interface IPlayerControllsActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }
