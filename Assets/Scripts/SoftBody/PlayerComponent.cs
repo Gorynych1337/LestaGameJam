@@ -1,12 +1,16 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SoftBodyComponent), typeof(Rigidbody2D))]
-public class PlayerMovementComponent: MonoBehaviour
+public class PlayerComponent: MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private SoftBodyComponent softBodyComponent;
     [SerializeField] private Rigidbody2D rb;
-    [Header("Settings")]
+    
+    [Header("Character Settings")]
+    [SerializeField] private float health;
+    
+    [Header("Movement Settings")]
     [SerializeField] private float movementForce;
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpCooldown = 2f;
@@ -16,12 +20,44 @@ public class PlayerMovementComponent: MonoBehaviour
     private float _lastJumpTime;
     private Inputs _input;
     private bool CanJump => Time.time - _groundedTime > jumpCooldown && _isGrounded;
+
+    public float Health
+    {
+        get => health;
+        set
+        {
+            if (value <= 0)
+            {
+                health = 0;
+                Die();
+            }
+            else
+            {
+                health = value;
+            }
+        }
+    }
+
+    private void Die()
+    {
+        throw new System.NotImplementedException();
+    }
     
+    private void Respawn()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void Start()
     {
         _input = new Inputs();
         _input.Enable();
         _input.PlayerMovement.Jump.performed += (ctx) => Jump();
+        _input.PlayerControlls.Pause.performed += (ctx) =>
+        {
+            if (GameManager.Instance.IsPaused) GameManager.Instance.ResumeGame();
+            else GameManager.Instance.PauseGame();
+        };
     }
 
     private void Jump()
@@ -53,5 +89,10 @@ public class PlayerMovementComponent: MonoBehaviour
         _isGrounded = true;
         _groundedTime = Time.time;
         softBodyComponent.SetLiquid();
+    }
+    
+    private void OnDestroy()
+    {
+        _input.Disable();
     }
 }

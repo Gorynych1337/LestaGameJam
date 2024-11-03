@@ -22,6 +22,7 @@ public class LevelSlot : MonoBehaviour, IDataView<LevelData>
 
     private void StartLevel()
     {
+        AudioManager.Instance.Play("ButtonClick", AudioType.Sound);
         SceneManager.LoadScene(_data.levelSceneName);
     }
 
