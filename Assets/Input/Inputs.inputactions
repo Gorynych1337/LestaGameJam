@@ -70,6 +70,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "PlayerControlls",
+            "id": "4dd6b681-4ca3-4803-930e-03fbfc4777ef",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "bcdb6b2d-e16e-430c-84d5-d21eb6d79719",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7efaec93-b9dc-4214-8ece-c32cc660e5a6",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
