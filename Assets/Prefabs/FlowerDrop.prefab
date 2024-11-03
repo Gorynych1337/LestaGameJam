@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4216240387617962347}
   - component: {fileID: 2310181675354808138}
   - component: {fileID: 5494624115972534151}
+  - component: {fileID: 4797576477030420769}
   - component: {fileID: 6146752934616300374}
   m_Layer: 0
-  m_Name: Drop
+  m_Name: FlowerDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,6 +136,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+--- !u!114 &4797576477030420769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6174938232651237327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24216ac60bf1a144dae2af0a11641578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   destroyTimer: 3
 --- !u!114 &6146752934616300374
 MonoBehaviour:
