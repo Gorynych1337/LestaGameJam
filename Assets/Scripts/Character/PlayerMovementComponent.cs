@@ -6,6 +6,7 @@ public class PlayerMovementComponent: MonoBehaviour
     [Header("References")]
     [SerializeField] private SoftBodyComponent softBodyComponent;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private FaceChanger faceChanger;
     [Header("Settings")]
     [SerializeField] private float movementForce;
     [SerializeField] private float jumpForce;
@@ -32,6 +33,8 @@ public class PlayerMovementComponent: MonoBehaviour
         _lastJumpTime = Time.time;
         softBodyComponent.SetSolid();
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+        faceChanger.ChangeFace(FaceChanger.Faces.Jump);
     }
 
     private void FixedUpdate()
@@ -49,6 +52,11 @@ public class PlayerMovementComponent: MonoBehaviour
 
     private void Update()
     {
+        if(!_isGrounded && rb.velocity.y < 0f)
+        {
+            faceChanger.ChangeFace(FaceChanger.Faces.Falling);
+        }
+
         if (!(Time.time - _lastJumpTime > 0.5f)) return;
         softBodyComponent.SetLiquid();
     }
@@ -59,5 +67,6 @@ public class PlayerMovementComponent: MonoBehaviour
         _isGrounded = true;
         _groundedTime = Time.time;
         softBodyComponent.SetLiquid();
+        faceChanger.ChangeFace(FaceChanger.Faces.Default);
     }
 }

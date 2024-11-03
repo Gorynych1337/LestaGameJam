@@ -158,7 +158,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 1.5000001
+  m_Distance: 1.5
   m_DampingRatio: 0
   m_Frequency: 3
 --- !u!1 &2543061055112589647
@@ -417,7 +417,7 @@ MonoBehaviour:
   - {fileID: 8800298833953709524}
   - {fileID: 7997299007720805954}
   solidFrequency: 100
-  liquidFrequency: 4
+  liquidFrequency: 3
 --- !u!114 &8489784013575668812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -937,9 +937,9 @@ SpriteShapeRenderer:
   m_SortingOrder: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_MaskInteraction: 0
-  m_ShapeTexture: {fileID: 2800000, guid: f417d295dfbe2d744ae7d54e53194962, type: 3}
+  m_ShapeTexture: {fileID: 2800000, guid: d01a0aa97b308b54a8b397b23821545c, type: 3}
   m_Sprites:
-  - {fileID: 21300000, guid: 7004cf229fae82a4fa67bbe425b7b2ec, type: 3}
+  - {fileID: 21300000, guid: 766698a2f3e199d49b99d83bfea574a0, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
@@ -949,8 +949,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: -0.022171497, y: -0.05784285, z: 0}
-    m_Extent: {x: 1.4341885, y: 1.5288961, z: 0}
+    m_Center: {x: -0.022167802, y: -0.057861686, z: 0}
+    m_Extent: {x: 1.2308643, y: 1.3255824, z: 0}
   m_SpriteSortPoint: 0
 --- !u!114 &4050088928003648213
 MonoBehaviour:
