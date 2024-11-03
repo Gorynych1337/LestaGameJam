@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6782464336944474763}
   m_Layer: 0
-  m_Name: "\u041A\u0430\u0447\u0430\u044E\u0449\u0435\u0435\u0441\u044F \u0431\u0440\u0435\u0432\u043D\u043E"
+  m_Name: brevno
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
