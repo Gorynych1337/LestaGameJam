@@ -9,7 +9,9 @@ public class MainMenuPanel : UIPanel
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button exitButton;
+    [SerializeField] private LevelMenuPanel LevelMenuPanel;
     [SerializeField] private SettingsMenuPanel settingsMenuPanel;
+    [SerializeField] private LevelsConfig levelsConfig;
 
     private void Awake()
     {
@@ -20,17 +22,21 @@ public class MainMenuPanel : UIPanel
 
     private void PlayButtonClicked()
     {
-        throw new NotImplementedException();
+        AudioManager.Instance.Play("ButtonClick", AudioType.Sound);
+        Hide();
+        LevelMenuPanel.Show(levelsConfig);
     }
 
     private void SettingsButtonClicked()
     {
         Hide();
+        AudioManager.Instance.Play("ButtonClick", AudioType.Sound);
         settingsMenuPanel.Show(SettingsData.Instance);
     }
 
     private void ExitButtonClicked()
     {
+        AudioManager.Instance.Play("ButtonClick", AudioType.Sound);
         Application.Quit();
     }
 
