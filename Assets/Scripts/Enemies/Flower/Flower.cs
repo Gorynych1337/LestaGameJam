@@ -17,7 +17,7 @@ public class Flower : MonoBehaviour
         isShooting = true;
         for (int i = 0; i < shotCount; i++)
         {
-            Shoot(i.ToString());
+            Shoot();
             yield return new WaitForSeconds(shotDelay);
         }
 
@@ -25,20 +25,13 @@ public class Flower : MonoBehaviour
         isShooting = false;
     }
 
-    private void Shoot(string temp)
+    private void Shoot()
     {
         var drop = Instantiate(dropPrefab, dropSpawn.position, dropSpawn.rotation);
         drop.GetComponent<DropFlight>().Instantiate(dropSpawn.TransformDirection(Vector3.right).normalized);
-        Debug.Log("Shoot" + temp);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (isShooting) return;
-        StartCoroutine("ShootCorutine");
-    }
-
-    private void Update()
     {
         if (isShooting) return;
         StartCoroutine("ShootCorutine");
