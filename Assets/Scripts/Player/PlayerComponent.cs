@@ -24,8 +24,6 @@ public class PlayerComponent: MonoBehaviour
     [SerializeField] private float maxHP;
 
     [SerializeField] private float invulnerableTime = 1f;
-
-    private bool CanJump => Time.time - _groundedTime > jumpCooldown && _isGrounded;
     
     private bool _isDead;
     private bool _isInvulnerable;
@@ -113,10 +111,17 @@ public class PlayerComponent: MonoBehaviour
 
     private void Jump()
     {
-        if (!CanJump) return;
+        if (Time.time - _lastJumpTime < jumpCooldown) return;
+
+        var hit = Physics2D.Raycast(transform.position,
+            Vector2.down,
+            transform.localScale.y * 2f,
+            LayerMask.GetMask("Ground"));
+        
+        if (!hit.collider) return;
         _isGrounded = false;
-        AudioManager.Instance.Play("jump");
         _lastJumpTime = Time.time;
+        AudioManager.Instance.Play("jump");
         softBodyComponent.SetSolid();
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         faceChanger.ChangeFaceForTime(0.5f, FaceChanger.Faces.Jump);
@@ -145,7 +150,6 @@ public class PlayerComponent: MonoBehaviour
         if (!collision.transform.CompareTag("Ground")) return;
         _isGrounded = true;
         faceChanger.ChangeFace();
-        _groundedTime = Time.time;
         softBodyComponent.SetLiquid();
     }
     
