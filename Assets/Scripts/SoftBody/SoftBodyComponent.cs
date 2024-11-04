@@ -26,11 +26,11 @@ public class SoftBodyComponent : MonoBehaviour
         innerJoints.ForEach(joint => { joint.frequency = liquidFrequency;});
     }
 
-    private void SettingSpring(SpringJoint2D spring, Rigidbody2D body, bool isInner)
+    private void SettingSpring(SpringJoint2D spring, Rigidbody2D body, float frequency, float dampingRatio)
     {
         spring.connectedBody = body;
-        spring.frequency = isInner ? liquidFrequency : liquidFrequency * 200;
-        spring.dampingRatio = isInner ? 0 : 1;
+        spring.frequency = frequency;
+        spring.dampingRatio = dampingRatio;
     }
 
     public void CreateMidBoneSprings()
@@ -53,9 +53,15 @@ public class SoftBodyComponent : MonoBehaviour
 
             innerJoints.Add(innerSpring);
 
-            SettingSpring(leftSpring, i == 0 ? boneList[boneList.Count - 1] : boneList[i - 1], false);
-            SettingSpring(rightSpring, i == boneList.Count - 1 ? boneList[0] : boneList[i + 1], false);
-            SettingSpring(innerSpring, midBone, true);
+            SettingSpring(leftSpring, i == 0 ? boneList[boneList.Count - 1] : boneList[i - 1], liquidFrequency, 1);
+            SettingSpring(rightSpring, i == boneList.Count - 1 ? boneList[0] : boneList[i + 1], liquidFrequency, 1);
+            SettingSpring(innerSpring, midBone, liquidFrequency, 1);
+            
+            leftSpring = bone.gameObject.AddComponent<SpringJoint2D>();
+            rightSpring = bone.gameObject.AddComponent<SpringJoint2D>();
+
+            SettingSpring(leftSpring, i < 4 ? boneList[boneList.Count - 4 + i] : boneList[i - 4], liquidFrequency, 1);
+            SettingSpring(rightSpring, i >= boneList.Count - 4 ? boneList[i - boneList.Count + 4] : boneList[i + 4], liquidFrequency, 1);
         }
     }
 }

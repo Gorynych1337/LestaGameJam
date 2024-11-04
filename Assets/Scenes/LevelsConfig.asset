@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - levelNumber: 1
-    levelSceneName: Level 1
+    levelSceneName: Scene_1
   - levelNumber: 2
     levelSceneName: 
