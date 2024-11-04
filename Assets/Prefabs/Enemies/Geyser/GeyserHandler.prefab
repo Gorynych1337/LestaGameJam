@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5038257528067723014}
   - component: {fileID: 3312541614289266649}
   m_Layer: 0
-  m_Name: GayserHandler
+  m_Name: GeyserHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
