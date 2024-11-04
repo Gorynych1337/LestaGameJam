@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(SoftBodyComponent), typeof(Rigidbody2D))]
@@ -14,28 +15,51 @@ public class PlayerComponent: MonoBehaviour
     [SerializeField] private float movementForce;
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpCooldown = 2f;
-    
+
+    [SerializeField] private float minHP;
+    [SerializeField] private float maxHP;
+
     private float _groundedTime;
     private bool _isGrounded;
     private float _lastJumpTime;
     private Inputs _input;
+
+    private float _scaleMod;
+
     private bool CanJump => Time.time - _groundedTime > jumpCooldown && _isGrounded;
     
-    public float Health
+    private float Health
     {
         get => health;
         set
         {
-            if (value <= 0)
+            if (value <= minHP)
             {
-                health = 0;
+                health = minHP;
                 Die();
             }
             else
             {
                 health = value;
+                health = Mathf.Min(health, maxHP);
+                Resize();
             }
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        Health -= damage;
+    }
+
+    public void TakeHeal(float heal)
+    {
+        Health += heal;
+    }
+
+    private void Resize()
+    {
+        transform.localScale = Vector3.one * health * _scaleMod / 100;
     }
 
     public void Die()
@@ -50,6 +74,8 @@ public class PlayerComponent: MonoBehaviour
 
     private void Start()
     {
+        _scaleMod = transform.localScale.x;
+
         _input = new Inputs();
         _input.Enable();
         _input.PlayerMovement.Jump.performed += (ctx) => Jump();
