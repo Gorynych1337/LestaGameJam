@@ -50,7 +50,7 @@ public class PlayerComponent: MonoBehaviour
             }
             else
             {
-                _healthDiff = value - health;
+                _healthDiff =  health - value;
                 health = value;
                 health = Mathf.Min(health, maxHP);
                 Resize();
@@ -76,7 +76,7 @@ public class PlayerComponent: MonoBehaviour
     private void Resize()
     {
         transform.localScale = Vector3.one * health * _scaleMod / 100;
-        softBodyComponent.ResizeSpringDistance(Mathf.Abs(_healthDiff / 100));
+        softBodyComponent.ResizeSpringDistance(_healthDiff / 100);
     }
 
     public void Die()

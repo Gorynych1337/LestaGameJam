@@ -109,3 +109,7 @@ MonoBehaviour:
     type: 2
     clip: {fileID: 8300000, guid: 9716407d09ff2514f89c175dbff17227, type: 3}
     loop: 1
+  - name: Story_start
+    type: 1
+    clip: {fileID: 8300000, guid: b252c7ae84642ab468570e9e0adcbc0c, type: 3}
+    loop: 1
