@@ -41,7 +41,8 @@ public class FishAnimation : MonoBehaviour
             .Append(fishTransform.DOLocalMoveY(0, flightDuration).SetEase(Ease.InQuart))
             .Append(fishTransform.DOLocalRotate(new Vector3(0, 0, 0), 0))
             .AppendInterval(cooldown)
-            .AppendCallback(EndAnimation);
+            .AppendCallback(EndAnimation)
+            .SetLink(gameObject);
     }
 
     private void Splash()
