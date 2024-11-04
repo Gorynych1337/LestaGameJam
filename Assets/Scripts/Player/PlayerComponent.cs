@@ -112,8 +112,9 @@ public class PlayerComponent: MonoBehaviour
     private void Jump()
     {
         if (Time.time - _lastJumpTime < jumpCooldown) return;
-
-        var hit = Physics2D.Raycast(transform.position,
+        
+        var hit = Physics2D.CircleCast(transform.position,
+            _scaleMod / 2f,
             Vector2.down,
             transform.localScale.y * 2f,
             LayerMask.GetMask("Ground"));

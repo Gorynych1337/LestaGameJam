@@ -582,7 +582,7 @@ MonoBehaviour:
   health: 100
   movementForce: 7
   jumpForce: 100
-  jumpCooldown: 0.1
+  jumpCooldown: 0.2
   minHP: 50
   maxHP: 200
   invulnerableTime: 1
@@ -612,7 +612,7 @@ MonoBehaviour:
   - {fileID: 658396846993094991}
   - {fileID: 8800298833953709524}
   - {fileID: 7997299007720805954}
-  solidFrequency: 100
+  solidFrequency: 10
   liquidFrequency: 3
 --- !u!114 &8489784013575668812
 MonoBehaviour:
