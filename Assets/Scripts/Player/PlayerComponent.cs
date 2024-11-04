@@ -81,7 +81,7 @@ public class PlayerComponent: MonoBehaviour
 
     public void Die()
     {
-        faceChanger.ChangeFace(FaceChanger.Faces.Death);
+        faceChanger.ChangeFaceConstant(FaceChanger.Faces.Death);
 
         DOTween.Sequence()
             .Append(fader.DOFade(1, 1))

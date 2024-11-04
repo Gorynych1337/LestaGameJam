@@ -17,6 +17,8 @@ public class FaceChanger : MonoBehaviour
     private Faces curentFace;
     private Sequence timeSequence;
 
+    private bool isConstant;
+
     public enum Faces
     {
         Default,
@@ -29,16 +31,13 @@ public class FaceChanger : MonoBehaviour
     private void Start()
     {
         faceRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    public void ChangeFace(Faces face = Faces.Default)
-    {
-        Change(face);
-        curentFace = face;
+        isConstant = false;
     }
 
     private void Change(Faces face)
     {
+        if (isConstant) return;
+
         switch (face)
         {
             case Faces.Default: faceRenderer.sprite = defaultFace; break;
@@ -50,6 +49,12 @@ public class FaceChanger : MonoBehaviour
         }
     }
 
+    public void ChangeFace(Faces face = Faces.Default)
+    {
+        Change(face);
+        curentFace = face;
+    }
+
     public void ChangeFaceForTime(float time, Faces face = Faces.Default)
     {
         if (timeSequence != null) timeSequence.Kill();
@@ -59,5 +64,11 @@ public class FaceChanger : MonoBehaviour
             .AppendInterval(time)
             .AppendCallback(() => Change(curentFace))
             .SetLink(gameObject);
+    }
+
+    public void ChangeFaceConstant(Faces face = Faces.Default)
+    {
+        Change(face);
+        isConstant = true;
     }
 }
