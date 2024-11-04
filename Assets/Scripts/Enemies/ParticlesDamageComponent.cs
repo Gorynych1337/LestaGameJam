@@ -25,7 +25,7 @@ public class ParticlesDamageComponent : MonoBehaviour
     {
         _isReady = false;
 
-        target.Health -= _damage;
+        target.TakeDamage(_damage);
 
         StartCoroutine(CoolDown());
     }
