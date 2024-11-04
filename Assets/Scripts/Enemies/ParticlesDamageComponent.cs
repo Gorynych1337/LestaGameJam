@@ -10,7 +10,7 @@ public class ParticlesDamageComponent : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.TryGetComponent(out Player target) && _isReady)
+        if (other.TryGetComponent(out PlayerComponent target) && _isReady)
             TakeDamage(target);
     }
 
@@ -21,11 +21,11 @@ public class ParticlesDamageComponent : MonoBehaviour
         _isReady = true;
     }
 
-    private void TakeDamage(Player target)
+    private void TakeDamage(PlayerComponent target)
     {
         _isReady = false;
 
-        target.GetDamage(_damage);
+        target.Health -= _damage;
 
         StartCoroutine(CoolDown());
     }

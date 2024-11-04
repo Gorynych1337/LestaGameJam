@@ -38,9 +38,9 @@ public class PlayerComponent: MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
-        throw new System.NotImplementedException();
+        Debug.LogError("Die method not implemented");
     }
     
     private void Respawn()
