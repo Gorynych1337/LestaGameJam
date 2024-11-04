@@ -645,7 +645,7 @@ MonoBehaviour:
   movementForce: 7
   jumpForce: 100
   jumpCooldown: 0.1
-  minHP: 90
+  minHP: 50
   maxHP: 200
   invulnerableTime: 1
 --- !u!114 &4504065045858239596
