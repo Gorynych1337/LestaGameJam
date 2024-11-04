@@ -4,13 +4,6 @@ using Game.Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public enum AudioType
-{
-    Sound,
-    Music,
-    Ambience
-}
-
 public class AudioManager : SingletonBehaviour<AudioManager>
 {
     [SerializeField] private AudioMixer audioMixer;
@@ -20,7 +13,6 @@ public class AudioManager : SingletonBehaviour<AudioManager>
     [SerializeField] private SoundCollection soundCollection;
     
     private readonly Dictionary<string, SoundCollection.Sound> _sounds = new();
-    
     public AudioMixer AudioMixer => audioMixer;
     
     private void Awake()
@@ -34,26 +26,26 @@ public class AudioManager : SingletonBehaviour<AudioManager>
         DontDestroyOnLoad(this);
     }
     
-    public void Play(string name, AudioType type, bool loop = false)
+    public void Play(string name)
     {
         if (!_sounds.TryGetValue(name, out var sound)) return;
-        switch (type)
+        switch (sound.type)
         {
             case AudioType.Sound:
                 soundSource.PlayOneShot(sound.clip);
                 break;
             case AudioType.Music:
                 musicSource.clip = sound.clip;
-                musicSource.loop = loop;
+                musicSource.loop = sound.loop;
                 if (!musicSource.isPlaying) musicSource.Play();
                 break;
             case AudioType.Ambience:
                 ambienceSource.clip = sound.clip;
-                ambienceSource.loop = loop;
+                ambienceSource.loop = sound.loop;
                 if (!ambienceSource.isPlaying) ambienceSource.Play();
                 break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+                throw new ArgumentOutOfRangeException();
         }
     }
     

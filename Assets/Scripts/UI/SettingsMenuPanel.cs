@@ -26,7 +26,7 @@ public class SettingsMenuPanel : UIPanel<SettingsData>{
     private void BackButtonClicked()
     {
         Hide();
-        AudioManager.Instance.Play("ButtonClick", AudioType.Sound);
+        AudioManager.Instance.Play("ButtonClick");
         mainMenuPanel.Show();
         try
         {

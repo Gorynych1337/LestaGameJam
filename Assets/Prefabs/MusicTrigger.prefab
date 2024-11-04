@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4574732599939161200}
-  - component: {fileID: 1305097028239426318}
   - component: {fileID: 5133834721540602289}
   m_Layer: 0
   m_Name: MusicTrigger
@@ -33,19 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1305097028239426318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344647162641402137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3719565d0f9704cb4c5d7e676ee219, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicName: 
 --- !u!61 &5133834721540602289
 BoxCollider2D:
   m_ObjectHideFlags: 0

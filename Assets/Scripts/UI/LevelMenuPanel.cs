@@ -21,7 +21,7 @@ public class LevelMenuPanel : UIPanel<LevelsConfig>
     private void BackButtonClicked()
     {
         Hide();
-        AudioManager.Instance.Play("ButtonClick", AudioType.Sound);
+        AudioManager.Instance.Play("ButtonClick");
         mainMenuPanel.Show();
     }
 
