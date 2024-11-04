@@ -29289,7 +29289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8336888367677202284, guid: 75f1c904521f94b4b9c13a1c503abab9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.8
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 8336888367677202284, guid: 75f1c904521f94b4b9c13a1c503abab9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -29334,6 +29334,10 @@ PrefabInstance:
     - target: {fileID: 8376972982910027724, guid: 75f1c904521f94b4b9c13a1c503abab9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8426008717234117360, guid: 75f1c904521f94b4b9c13a1c503abab9, type: 3}
+      propertyPath: rockDelay
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
