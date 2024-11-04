@@ -12,6 +12,6 @@ public class FinishVolume : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         GameManager.Instance.FinishLevel();
-        GameManager.Instance.FadeWithLoadScene(SceneManager.GetSceneByName(nextLevelName).buildIndex);
+        GameManager.Instance.FadeWithLoadScene(nextLevelName);
     }
 }

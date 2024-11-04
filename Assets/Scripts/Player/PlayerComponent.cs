@@ -76,7 +76,7 @@ public class PlayerComponent: MonoBehaviour
     private void Resize()
     {
         transform.localScale = Vector3.one * health * _scaleMod / 100;
-        softBodyComponent.ResizeSpringDistance(_healthDiff / 100);
+        softBodyComponent.ResizeSpringDistance(_healthDiff * (_scaleMod * 2) / 100);
     }
 
     public void Die()
