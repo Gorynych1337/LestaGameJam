@@ -51,3 +51,6 @@ TagManager:
   - name: Foreground
     uniqueID: 1788809369
     locked: 0
+  - name: Fader
+    uniqueID: 2709413773
+    locked: 0

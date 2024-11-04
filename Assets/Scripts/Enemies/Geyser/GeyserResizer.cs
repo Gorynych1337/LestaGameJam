@@ -42,7 +42,8 @@ public class GeyserResizer : MonoBehaviour
 
         s.AppendInterval(inDownPositionTime)
             .AppendCallback(ResetEnumerator)
-            .SetLoops(-1);
+            .SetLoops(-1)
+            .SetLink(gameObject);
     }
 
     private void ResetEnumerator()
