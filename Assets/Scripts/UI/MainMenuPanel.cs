@@ -22,7 +22,7 @@ public class MainMenuPanel : UIPanel
 
     private void PlayButtonClicked()
     {
-        AudioManager.Instance.Play("ButtonClick", AudioType.Sound);
+        AudioManager.Instance.Play("ButtonClick");
         Hide();
         LevelMenuPanel.Show(levelsConfig);
     }
@@ -30,13 +30,13 @@ public class MainMenuPanel : UIPanel
     private void SettingsButtonClicked()
     {
         Hide();
-        AudioManager.Instance.Play("ButtonClick", AudioType.Sound);
+        AudioManager.Instance.Play("ButtonClick");
         settingsMenuPanel.Show(SettingsData.Instance);
     }
 
     private void ExitButtonClicked()
     {
-        AudioManager.Instance.Play("ButtonClick", AudioType.Sound);
+        AudioManager.Instance.Play("ButtonClick");
         Application.Quit();
     }
 
