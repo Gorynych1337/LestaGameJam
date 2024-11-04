@@ -9,7 +9,7 @@ public class StartUp : MonoBehaviour
     {
         mainMenuPanel.Show();
         SettingsData.Instance.UpdateAudioVolume();
-        AudioManager.Instance.Play("MenuMusic", AudioType.Music, true);
+        AudioManager.Instance.Play("MenuMusic");
     }
 
     // Update is called once per frame

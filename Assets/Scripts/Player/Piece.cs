@@ -8,7 +8,7 @@ public class Piece : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.TryGetComponent(out PlayerComponent target)) return;
-        target.Health += _healSize;
+        target.TakeHeal(_healSize);
         Destroy(gameObject);
     }
 }

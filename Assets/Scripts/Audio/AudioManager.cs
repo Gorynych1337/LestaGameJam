@@ -4,21 +4,15 @@ using Game.Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public enum AudioType
-{
-    Sound,
-    Music
-}
-
 public class AudioManager : SingletonBehaviour<AudioManager>
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioSource soundSource;
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource ambienceSource;
     [SerializeField] private SoundCollection soundCollection;
     
     private readonly Dictionary<string, SoundCollection.Sound> _sounds = new();
-    
     public AudioMixer AudioMixer => audioMixer;
     
     private void Awake()
@@ -32,21 +26,26 @@ public class AudioManager : SingletonBehaviour<AudioManager>
         DontDestroyOnLoad(this);
     }
     
-    public void Play(string name, AudioType type, bool loop = false)
+    public void Play(string name)
     {
         if (!_sounds.TryGetValue(name, out var sound)) return;
-        switch (type)
+        switch (sound.type)
         {
             case AudioType.Sound:
                 soundSource.PlayOneShot(sound.clip);
                 break;
             case AudioType.Music:
                 musicSource.clip = sound.clip;
-                musicSource.loop = loop;
+                musicSource.loop = sound.loop;
                 if (!musicSource.isPlaying) musicSource.Play();
                 break;
+            case AudioType.Ambience:
+                ambienceSource.clip = sound.clip;
+                ambienceSource.loop = sound.loop;
+                if (!ambienceSource.isPlaying) ambienceSource.Play();
+                break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+                throw new ArgumentOutOfRangeException();
         }
     }
     
@@ -59,6 +58,9 @@ public class AudioManager : SingletonBehaviour<AudioManager>
                 break;
             case AudioType.Music:
                 musicSource.Stop();
+                break;
+            case AudioType.Ambience:
+                ambienceSource.Stop();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
@@ -75,6 +77,9 @@ public class AudioManager : SingletonBehaviour<AudioManager>
             case AudioType.Music:
                 musicSource.Pause();
                 break;
+                case AudioType.Ambience:
+                    ambienceSource.Pause();
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
@@ -89,6 +94,9 @@ public class AudioManager : SingletonBehaviour<AudioManager>
                 break;
             case AudioType.Music:
                 musicSource.UnPause();
+                break;
+                case AudioType.Ambience:
+                    ambienceSource.UnPause();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);

@@ -46,7 +46,7 @@ public class Flower : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (isShooting) return;
-        if (!collision.TryGetComponent(out Player target)) return;
+        if (!collision.TryGetComponent(out PlayerComponent target)) return;
         StartCoroutine("ShootCorutine");
     }
 }

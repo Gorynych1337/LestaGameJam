@@ -22,20 +22,20 @@ public class IngameMenuPanel : UIPanel
 
     private void ContinueButtonClicked()
     {
-        AudioManager.Instance.Play("ButtonClick", AudioType.Sound);
+        AudioManager.Instance.Play("ButtonClick");
         GameManager.Instance.ResumeGame();
     }
 
     private void SettingsButtonClicked()
     {
         Hide();
-        AudioManager.Instance.Play("ButtonClick", AudioType.Sound);
+        AudioManager.Instance.Play("ButtonClick");
         settingsMenuPanel.Show(SettingsData.Instance);
     }
 
     private void MainMenuButtonClicked()
     {
-        AudioManager.Instance.Play("ButtonClick", AudioType.Sound);
+        AudioManager.Instance.Play("ButtonClick");
         GameManager.Instance.ResumeGame();
         SceneManager.LoadScene(0);
     }

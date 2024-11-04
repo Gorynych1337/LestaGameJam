@@ -14,36 +14,98 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: MenuMusic
+    type: 1
     clip: {fileID: 8300000, guid: 4dd018ce9f20f03499f8ff2e57eaf325, type: 3}
+    loop: 1
   - name: ButtonClick
+    type: 0
     clip: {fileID: 8300000, guid: 7968026a70932c34dadadd2bd761f433, type: 3}
+    loop: 0
   - name: Main_music
+    type: 1
     clip: {fileID: 8300000, guid: 3880c5a888b94534a8c870d89065c0a0, type: 3}
+    loop: 1
   - name: Main_ambient
+    type: 2
     clip: {fileID: 8300000, guid: 3880c5a888b94534a8c870d89065c0a0, type: 3}
+    loop: 1
   - name: Rock_fall
+    type: 0
     clip: {fileID: 8300000, guid: 4476acc293335c44f8d54ee791fa47be, type: 3}
+    loop: 0
   - name: Parrot_1
+    type: 0
     clip: {fileID: 8300000, guid: 789d7bf236cb7624f80326cf83ae8a1a, type: 3}
+    loop: 0
   - name: Parrot_2
+    type: 0
     clip: {fileID: 8300000, guid: 90d8153753de7b6499e273d0967e92e4, type: 3}
+    loop: 0
   - name: Parrot_3
+    type: 0
     clip: {fileID: 8300000, guid: 49436f55cac22c54cacdd26ace5ebf50, type: 3}
+    loop: 0
   - name: Kust
+    type: 0
     clip: {fileID: 8300000, guid: e0f84ae6c778eb9448fed62d91ad5968, type: 3}
+    loop: 0
   - name: Damage
+    type: 0
     clip: {fileID: 8300000, guid: 986f92fbe627d6746a2b97ce2f4c015e, type: 3}
+    loop: 0
   - name: Death
+    type: 0
     clip: {fileID: 8300000, guid: 00737a73fbbbfd6409e29534090b397e, type: 3}
+    loop: 0
   - name: Flowers_atack
+    type: 0
     clip: {fileID: 8300000, guid: 61b9170831e276e4196685f2112f6545, type: 3}
+    loop: 0
   - name: Move
+    type: 0
     clip: {fileID: 8300000, guid: 73b82577e5f346440944460891b30c38, type: 3}
+    loop: 0
   - name: Vsasivaet
+    type: 0
     clip: {fileID: 8300000, guid: 217a75065677d434ea1615c7db84632c, type: 3}
+    loop: 0
   - name: Wood1
+    type: 0
     clip: {fileID: 8300000, guid: 3bcaa602e9c85484390c44cd3fee6f88, type: 3}
+    loop: 0
   - name: Wood2
+    type: 0
     clip: {fileID: 8300000, guid: 4d5ba86d2e99ead4ab65105f5a30fe39, type: 3}
-  - name: Level1_Part1
+    loop: 0
+  - name: L1_1part
+    type: 1
     clip: {fileID: 8300000, guid: 007532ff5d188734fb4830fbbe75de64, type: 3}
+    loop: 1
+  - name: Birds_1
+    type: 2
+    clip: {fileID: 8300000, guid: 0520f85138137864fab5ff2fc7ac57db, type: 3}
+    loop: 1
+  - name: Birds_2
+    type: 2
+    clip: {fileID: 8300000, guid: 73aa9a91d6c4358438fcc6b856299fe1, type: 3}
+    loop: 1
+  - name: Fish_atack
+    type: 0
+    clip: {fileID: 8300000, guid: 808135ca63592744395e502ce2703cc2, type: 3}
+    loop: 0
+  - name: Rain_atack
+    type: 0
+    clip: {fileID: 8300000, guid: d7fef161b02396746ab258bb62e9374a, type: 3}
+    loop: 0
+  - name: Waterfall_osn
+    type: 2
+    clip: {fileID: 8300000, guid: 4138acbe5428a8944bb7349a9f890060, type: 3}
+    loop: 1
+  - name: Wind_osn
+    type: 2
+    clip: {fileID: 8300000, guid: e2626533a9f5ef34b8675dc912ae296a, type: 3}
+    loop: 1
+  - name: Birds_jungle
+    type: 2
+    clip: {fileID: 8300000, guid: 9716407d09ff2514f89c175dbff17227, type: 3}
+    loop: 1

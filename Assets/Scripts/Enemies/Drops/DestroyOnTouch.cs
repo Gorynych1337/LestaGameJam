@@ -6,7 +6,7 @@ public class DestroyOnTouch : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.TryGetComponent(out Player target)) return;
+        if (!collision.TryGetComponent(out PlayerComponent target)) return;
         Destroy(gameObject);
     }
 }
