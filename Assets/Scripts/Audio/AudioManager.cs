@@ -43,7 +43,7 @@ public class AudioManager : SingletonBehaviour<AudioManager>
             case AudioType.Music:
                 musicSource.clip = sound.clip;
                 musicSource.loop = loop;
-                musicSource.Play();
+                if (!musicSource.isPlaying) musicSource.Play();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
