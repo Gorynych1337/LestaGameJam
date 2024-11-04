@@ -77,7 +77,7 @@ MonoBehaviour:
     type: 0
     clip: {fileID: 8300000, guid: 4d5ba86d2e99ead4ab65105f5a30fe39, type: 3}
     loop: 0
-  - name: Level1_Part1
+  - name: L1_1part
     type: 1
     clip: {fileID: 8300000, guid: 007532ff5d188734fb4830fbbe75de64, type: 3}
     loop: 1
