@@ -29,8 +29,6 @@ public class CloudPlatformComponent : MonoBehaviour
             _endTransform.position = transform.position;
             _endTransform.SetParent(transform);
         }
-
-
     }
 
     private void OnDrawGizmos()
@@ -44,8 +42,6 @@ public class CloudPlatformComponent : MonoBehaviour
 
         Gizmos.DrawSphere(_startTransform.position, 0.5f);
         Gizmos.DrawSphere(_endTransform.position, 0.5f);
-
-
     }
 
     void Start()
@@ -55,7 +51,8 @@ public class CloudPlatformComponent : MonoBehaviour
         this.transform.position = _startTransform.position;
         transform.DOMove(targetPose, _loopTime)
             .SetLoops(-1, LoopType.Yoyo)
-            .SetEase(Ease.InOutQuad);
+            .SetEase(Ease.InOutQuad)
+            .SetLink(gameObject);
     }
 }
 

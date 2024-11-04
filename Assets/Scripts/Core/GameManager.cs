@@ -9,12 +9,12 @@ using UnityEngine.Serialization;
 public class GameManager : SingletonBehaviour<GameManager>
 {
     [SerializeField] private IngameMenuPanel ingameMenuPanel;
-    [SerializeField]private int level = 0;
-
+    [SerializeField]private int level = 1;
+    
     public int Level => level;
+    public int CurrentLevel { get; set; }
     public bool IsPaused { get; private set; }
-
-
+    
     private void Awake()
     {
         base.Awake();
@@ -36,15 +36,25 @@ public class GameManager : SingletonBehaviour<GameManager>
         ingameMenuPanel.Hide();
     }
 
-    private void OnApplicationQuit()
+    public void FinishLevel()
+    {
+        level = CurrentLevel + 1;
+        SaveLevel();
+    }
+
+    private void SaveLevel()
     {
         GameData.Instance.Level = level;
         GameData.Instance.Save();
     }
 
+    private void OnApplicationQuit()
+    {
+        SaveLevel();
+    }
+
     private void OnDestroy()
     {
-        GameData.Instance.Level = level;
-        GameData.Instance.Save();
+        SaveLevel();
     }
 }

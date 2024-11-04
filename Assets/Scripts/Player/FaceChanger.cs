@@ -57,6 +57,7 @@ public class FaceChanger : MonoBehaviour
         timeSequence = DOTween.Sequence()
             .AppendCallback(() => Change(face))
             .AppendInterval(time)
-            .AppendCallback(() => Change(curentFace));
+            .AppendCallback(() => Change(curentFace))
+            .SetLink(gameObject);
     }
 }
