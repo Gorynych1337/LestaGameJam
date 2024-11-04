@@ -28,7 +28,7 @@ public class CutScenePanel : UIPanel
         _index++;
         if (_index == _backgrounds.Count)
         {
-            SceneManager.LoadScene(_nextSceneName);
+            GameManager.Instance.FadeWithLoadScene(_nextSceneName);
             return;
         }
         

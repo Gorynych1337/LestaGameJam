@@ -10,8 +10,6 @@ public class PlayerComponent: MonoBehaviour
     [SerializeField] private SoftBodyComponent softBodyComponent;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private FaceChanger faceChanger;
-    [SerializeField] private Image fader;
-
     
     [Header("Character Settings")]
     [SerializeField] private float health;
@@ -25,18 +23,17 @@ public class PlayerComponent: MonoBehaviour
     [SerializeField] private float minHP;
     [SerializeField] private float maxHP;
 
+    [SerializeField] private float invulnerableTime = 1f;
+
+    private bool CanJump => Time.time - _groundedTime > jumpCooldown && _isGrounded;
+    
+    private bool _isInvulnerable;
     private float _groundedTime;
     private bool _isGrounded;
     private float _lastJumpTime;
     private Inputs _input;
-
     private float _scaleMod;
     private float _healthDiff;
-
-    private bool CanJump => Time.time - _groundedTime > jumpCooldown && _isGrounded;
-    
-    [SerializeField] private float invulnerableTime = 1f;
-    private bool _isInvulnerable;
     
     private float Health
     {

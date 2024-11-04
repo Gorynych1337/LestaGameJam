@@ -54,14 +54,25 @@ public class GameManager : SingletonBehaviour<GameManager>
     
     public void FadeWithLoadScene(int index)
     {
+        FadeWithLoadScene(() => SceneManager.LoadScene(index));
+    }
+
+    public void FadeWithLoadScene(string sceneName)
+    {
+        FadeWithLoadScene(() => SceneManager.LoadScene(sceneName));
+    }   
+
+    private void FadeWithLoadScene(Action loadSceneAction)
+    {
         DOTween.Sequence()
             .OnStart(() => fader.gameObject.SetActive(true))
-            .Append(fader.DOFade(1, 1))
-            .AppendCallback(() => SceneManager.LoadScene(index))
-            .SetLink(gameObject)
-            .Append(fader.DOFade(0, 1))
+            .Append(fader.DOFade(1f, 1f))
+            .AppendCallback(() => loadSceneAction())
+            .AppendInterval(0.5f)
+            .Append(fader.DOFade(0f, 1f))
             .OnComplete(() => fader.gameObject.SetActive(false))
-            .OnKill(() => fader.gameObject.SetActive(false));
+            .OnKill(() => fader.gameObject.SetActive(false))
+            .SetLink(gameObject);
     }
 
     private void OnApplicationQuit()
