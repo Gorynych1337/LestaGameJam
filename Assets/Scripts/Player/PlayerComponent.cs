@@ -10,8 +10,6 @@ public class PlayerComponent: MonoBehaviour
     [SerializeField] private SoftBodyComponent softBodyComponent;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private FaceChanger faceChanger;
-    [SerializeField] private Image fader;
-
     
     [Header("Character Settings")]
     [SerializeField] private float health;
@@ -25,18 +23,16 @@ public class PlayerComponent: MonoBehaviour
     [SerializeField] private float minHP;
     [SerializeField] private float maxHP;
 
+    [SerializeField] private float invulnerableTime = 1f;
+    
+    private bool _isDead;
+    private bool _isInvulnerable;
     private float _groundedTime;
     private bool _isGrounded;
     private float _lastJumpTime;
     private Inputs _input;
-
     private float _scaleMod;
     private float _healthDiff;
-
-    private bool CanJump => Time.time - _groundedTime > jumpCooldown && _isGrounded;
-    
-    [SerializeField] private float invulnerableTime = 1f;
-    private bool _isInvulnerable;
     
     private float Health
     {
@@ -50,7 +46,7 @@ public class PlayerComponent: MonoBehaviour
             }
             else
             {
-                _healthDiff = value - health;
+                _healthDiff =  health - value;
                 health = value;
                 health = Mathf.Min(health, maxHP);
                 Resize();
@@ -58,35 +54,39 @@ public class PlayerComponent: MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool perTick = false)
     {
-        if (_isInvulnerable) return;
-        _isInvulnerable = true;
-        DOVirtual.DelayedCall(invulnerableTime, () => _isInvulnerable = false);
+        if (!perTick)
+        {
+            if (_isInvulnerable) return;
+            _isInvulnerable = true;
+            DOVirtual.DelayedCall(invulnerableTime, () => _isInvulnerable = false);
+            AudioManager.Instance.Play("Damage");
+        }
+        
         Health -= damage;
-
         faceChanger.ChangeFaceForTime(0.5f, FaceChanger.Faces.Damaged);
     }
 
     public void TakeHeal(float heal)
     {
         Health += heal;
+        AudioManager.Instance.Play("Vsasivaet");
     }
 
     private void Resize()
     {
         transform.localScale = Vector3.one * health * _scaleMod / 100;
-        softBodyComponent.ResizeSpringDistance(Mathf.Abs(_healthDiff / 100));
+        softBodyComponent.ResizeSpringDistance(_healthDiff * (_scaleMod * 2) / 100);
     }
 
     public void Die()
     {
-        faceChanger.ChangeFace(FaceChanger.Faces.Death);
-
-        DOTween.Sequence()
-            .Append(fader.DOFade(1, 1))
-            .AppendCallback(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex))
-            .SetLink(gameObject);
+        if(_isDead) return;
+        _isDead = true;
+        faceChanger.ChangeFaceConstant(FaceChanger.Faces.Death);
+        AudioManager.Instance.Play("Death");
+        GameManager.Instance.FadeWithLoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
     private void Respawn()
@@ -97,6 +97,7 @@ public class PlayerComponent: MonoBehaviour
     private void Start()
     {
         _scaleMod = transform.localScale.x;
+        _isDead = false;
 
         _input = new Inputs();
         _input.Enable();
@@ -110,9 +111,18 @@ public class PlayerComponent: MonoBehaviour
 
     private void Jump()
     {
-        if (!CanJump) return;
+        if (Time.time - _lastJumpTime < jumpCooldown) return;
+        
+        var hit = Physics2D.CircleCast(transform.position,
+            _scaleMod / 2f,
+            Vector2.down,
+            transform.localScale.y * 2f,
+            LayerMask.GetMask("Ground"));
+        
+        if (!hit.collider) return;
         _isGrounded = false;
         _lastJumpTime = Time.time;
+        AudioManager.Instance.Play("jump");
         softBodyComponent.SetSolid();
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         faceChanger.ChangeFaceForTime(0.5f, FaceChanger.Faces.Jump);
@@ -130,6 +140,8 @@ public class PlayerComponent: MonoBehaviour
     {
         if (!_isGrounded && rb.velocity.y < 0) faceChanger.ChangeFace(FaceChanger.Faces.Falling);
 
+        if (transform.position.y < -100) Die();
+
         if (!(Time.time - _lastJumpTime > 0.5f)) return;
         softBodyComponent.SetLiquid();
     }
@@ -139,7 +151,6 @@ public class PlayerComponent: MonoBehaviour
         if (!collision.transform.CompareTag("Ground")) return;
         _isGrounded = true;
         faceChanger.ChangeFace();
-        _groundedTime = Time.time;
         softBodyComponent.SetLiquid();
     }
     
