@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6782464336944474763}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: brevno
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 6641131519312147456}
   - component: {fileID: 4716353377426916953}
   - component: {fileID: 2042321791016050535}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "\u0411\u0440\u0435\u0432\u043D\u043E"
   m_TagString: Ground
   m_Icon: {fileID: 0}

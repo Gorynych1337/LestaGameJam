@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 37730870}
   - component: {fileID: 37730869}
   - component: {fileID: 37730868}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tilemap
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -40703,6 +40703,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u041A\u0430\u0447\u0430\u044E\u0449\u0435\u0435\u0441\u044F \u0431\u0440\u0435\u0432\u043D\u043E"
       objectReference: {fileID: 0}
+    - target: {fileID: 1916842041502307186, guid: 1c4bf85160497504396d1f9774569686, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1946434464743698764, guid: 1c4bf85160497504396d1f9774569686, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -40754,6 +40758,10 @@ PrefabInstance:
     - target: {fileID: 6782464336944474763, guid: 1c4bf85160497504396d1f9774569686, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787122401563950125, guid: 1c4bf85160497504396d1f9774569686, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
