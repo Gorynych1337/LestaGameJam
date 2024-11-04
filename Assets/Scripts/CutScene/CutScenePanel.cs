@@ -10,6 +10,8 @@ public class CutScenePanel : UIPanel
     [SerializeField] private List<Sprite> _backgrounds;
     [SerializeField] private Image _imgObj;
     [SerializeField] private Button _continueButton;
+    [SerializeField] private string _nextSceneName;
+    [SerializeField] private string _musicName;
 
     private int _index;
 
@@ -19,7 +21,7 @@ public class CutScenePanel : UIPanel
         _index = 0;
         _imgObj.sprite = _backgrounds[0];
         _index++;
-        AudioManager.Instance.Play("Story_start");
+        AudioManager.Instance.Play(_musicName);
     }
 
     private void ContinueButtonClicked()
@@ -30,7 +32,7 @@ public class CutScenePanel : UIPanel
 
         if (_index == _backgrounds.Count)
         {
-            SceneManager.LoadScene("Scene_1");
+            SceneManager.LoadScene(_nextSceneName);
         }
     }
 

@@ -113,3 +113,7 @@ MonoBehaviour:
     type: 1
     clip: {fileID: 8300000, guid: b252c7ae84642ab468570e9e0adcbc0c, type: 3}
     loop: 1
+  - name: 13a Parting
+    type: 1
+    clip: {fileID: 8300000, guid: 25bc3c59831ca3b43b5d3a24c0c18b17, type: 3}
+    loop: 1
