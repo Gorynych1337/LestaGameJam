@@ -540,6 +540,7 @@ GameObject:
   - component: {fileID: 252305823}
   - component: {fileID: 252305825}
   - component: {fileID: 252305824}
+  - component: {fileID: 252305826}
   m_Layer: 0
   m_Name: Tilemap (2)
   m_TagString: Untagged
@@ -741,6 +742,42 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &252305826
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252305822}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &285524341
 GameObject:
   m_ObjectHideFlags: 0
@@ -23876,8 +23913,8 @@ Transform:
   m_GameObject: {fileID: 492803021}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 119.6061, y: -20.875, z: 0}
-  m_LocalScale: {x: 1.4993061, y: 1.0952969, z: 1}
+  m_LocalPosition: {x: 119.6061, y: -20.7318, z: 0}
+  m_LocalScale: {x: 1.4993061, y: 1.1512727, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1708506861}
