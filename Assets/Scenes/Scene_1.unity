@@ -27748,9 +27748,17 @@ PrefabInstance:
       propertyPath: inUpPositionTime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2625425472554389183, guid: 489bb8a39a9a0ff44962d6f9df2a2698, type: 3}
+      propertyPath: inDownPositionTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2933984512062247722, guid: 489bb8a39a9a0ff44962d6f9df2a2698, type: 3}
       propertyPath: inUpPositionTime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2933984512062247722, guid: 489bb8a39a9a0ff44962d6f9df2a2698, type: 3}
+      propertyPath: inDownPositionTime
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3312541614289266649, guid: 489bb8a39a9a0ff44962d6f9df2a2698, type: 3}
       propertyPath: nextGeyserDelay
@@ -27823,6 +27831,10 @@ PrefabInstance:
     - target: {fileID: 7399843534343893376, guid: 489bb8a39a9a0ff44962d6f9df2a2698, type: 3}
       propertyPath: _damagePerTick
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018554662334404679, guid: 489bb8a39a9a0ff44962d6f9df2a2698, type: 3}
+      propertyPath: inDownPositionTime
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
