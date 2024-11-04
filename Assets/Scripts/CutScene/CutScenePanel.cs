@@ -19,6 +19,7 @@ public class CutScenePanel : UIPanel
         _index = 0;
         _imgObj.sprite = _backgrounds[0];
         _index++;
+        AudioManager.Instance.Play("Story_start");
     }
 
     private void ContinueButtonClicked()
