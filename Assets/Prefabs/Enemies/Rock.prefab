@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8242097607141181955}
-  - component: {fileID: 2591773877741871043}
   - component: {fileID: 8261697232392322866}
   - component: {fileID: 3931527552668482810}
+  - component: {fileID: 6494894088003709885}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -34,19 +34,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2591773877741871043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8380470246504703271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad942ca202081f04cbc40a402e566f55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 10
 --- !u!212 &8261697232392322866
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -144,3 +131,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &6494894088003709885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8380470246504703271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd0ca9c3f563f14a8b6487f42c2040b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  perTick: 0

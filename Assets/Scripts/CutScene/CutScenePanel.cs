@@ -20,20 +20,20 @@ public class CutScenePanel : UIPanel
         _continueButton.onClick.AddListener(ContinueButtonClicked);
         _index = 0;
         _imgObj.sprite = _backgrounds[0];
-        _index++;
         AudioManager.Instance.Play(_musicName);
     }
 
     private void ContinueButtonClicked()
     {
-        AudioManager.Instance.Play("ButtonClick");
-        _imgObj.sprite = _backgrounds[_index];
         _index++;
-
         if (_index == _backgrounds.Count)
         {
             SceneManager.LoadScene(_nextSceneName);
+            return;
         }
+        
+        AudioManager.Instance.Play("ButtonClick");
+        _imgObj.sprite = _backgrounds[_index];
     }
 
 

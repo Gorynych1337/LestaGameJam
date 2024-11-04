@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class FinishVolume : MonoBehaviour
 {
+    [SerializeField] private string nextLevelName;
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
         GameManager.Instance.FinishLevel();
-        SceneManager.LoadScene(0);
+        GameManager.Instance.FadeWithLoadScene(SceneManager.GetSceneByName(nextLevelName).buildIndex);
     }
 }

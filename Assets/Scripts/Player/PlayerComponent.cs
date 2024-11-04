@@ -58,13 +58,16 @@ public class PlayerComponent: MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool perTick = false)
     {
-        if (_isInvulnerable) return;
-        _isInvulnerable = true;
-        DOVirtual.DelayedCall(invulnerableTime, () => _isInvulnerable = false);
+        if (!perTick)
+        {
+            if (_isInvulnerable) return;
+            _isInvulnerable = true;
+            DOVirtual.DelayedCall(invulnerableTime, () => _isInvulnerable = false);
+        }
+        
         Health -= damage;
-
         faceChanger.ChangeFaceForTime(0.5f, FaceChanger.Faces.Damaged);
     }
 
@@ -82,11 +85,7 @@ public class PlayerComponent: MonoBehaviour
     public void Die()
     {
         faceChanger.ChangeFaceConstant(FaceChanger.Faces.Death);
-
-        DOTween.Sequence()
-            .Append(fader.DOFade(1, 1))
-            .AppendCallback(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex))
-            .SetLink(gameObject);
+        GameManager.Instance.FadeWithLoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
     private void Respawn()

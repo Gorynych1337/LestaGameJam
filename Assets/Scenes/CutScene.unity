@@ -514,6 +514,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ab9d1db4afe79904aa5f0a6154d835f2, type: 3}
   _imgObj: {fileID: 1552190111}
   _continueButton: {fileID: 1835658783}
+  _nextSceneName: Scene_1
+  _musicName: Story_start
 --- !u!1001 &7892601038428481351
 PrefabInstance:
   m_ObjectHideFlags: 0
