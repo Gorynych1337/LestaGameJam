@@ -579,7 +579,6 @@ MonoBehaviour:
   softBodyComponent: {fileID: 4504065045858239596}
   rb: {fileID: 6360722093253017193}
   faceChanger: {fileID: 4794680640222118605}
-  fader: {fileID: 0}
   health: 100
   movementForce: 7
   jumpForce: 100
@@ -677,7 +676,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.05
+  m_Radius: 2.2
 --- !u!50 &6360722093253017193
 Rigidbody2D:
   serializedVersion: 4

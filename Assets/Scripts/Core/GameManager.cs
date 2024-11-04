@@ -67,10 +67,10 @@ public class GameManager : SingletonBehaviour<GameManager>
         DOTween.Sequence()
             .OnStart(() => fader.gameObject.SetActive(true))
             .Append(fader.DOFade(1f, 1f))
-            .AppendInterval(0.5f)
+            .AppendInterval(1f)
             .AppendCallback(() => loadSceneAction())
             .AppendInterval(0.5f)
-            .Append(fader.DOFade(0f, 1f))
+            .Append(fader.DOFade(0f, 0.5f))
             .OnComplete(() => fader.gameObject.SetActive(false))
             .OnKill(() => fader.gameObject.SetActive(false))
             .SetLink(gameObject);

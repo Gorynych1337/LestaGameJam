@@ -63,10 +63,29 @@ public class AudioManager : SingletonBehaviour<AudioManager>
                 ambienceSource.Stop();
                 break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+                throw new ArgumentOutOfRangeException();
         }
     }
-    
+
+    public void Stop(string name)
+    {
+        if (!_sounds.TryGetValue(name, out var sound)) return;
+        switch (sound.type)
+        {
+            case AudioType.Sound:
+                soundSource.Stop();
+                break;
+            case AudioType.Music:
+                musicSource.Stop();
+                break;
+            case AudioType.Ambience:
+                ambienceSource.Stop();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
     public void Pause(AudioType type)
     {
         switch (type)

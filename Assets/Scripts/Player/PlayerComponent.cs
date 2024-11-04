@@ -27,6 +27,7 @@ public class PlayerComponent: MonoBehaviour
 
     private bool CanJump => Time.time - _groundedTime > jumpCooldown && _isGrounded;
     
+    private bool _isDead;
     private bool _isInvulnerable;
     private float _groundedTime;
     private bool _isGrounded;
@@ -62,6 +63,7 @@ public class PlayerComponent: MonoBehaviour
             if (_isInvulnerable) return;
             _isInvulnerable = true;
             DOVirtual.DelayedCall(invulnerableTime, () => _isInvulnerable = false);
+            AudioManager.Instance.Play("Damage");
         }
         
         Health -= damage;
@@ -71,6 +73,7 @@ public class PlayerComponent: MonoBehaviour
     public void TakeHeal(float heal)
     {
         Health += heal;
+        AudioManager.Instance.Play("Vsasivaet");
     }
 
     private void Resize()
@@ -81,7 +84,10 @@ public class PlayerComponent: MonoBehaviour
 
     public void Die()
     {
+        if(_isDead) return;
+        _isDead = true;
         faceChanger.ChangeFaceConstant(FaceChanger.Faces.Death);
+        AudioManager.Instance.Play("Death");
         GameManager.Instance.FadeWithLoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
@@ -93,6 +99,7 @@ public class PlayerComponent: MonoBehaviour
     private void Start()
     {
         _scaleMod = transform.localScale.x;
+        _isDead = false;
 
         _input = new Inputs();
         _input.Enable();
@@ -108,6 +115,7 @@ public class PlayerComponent: MonoBehaviour
     {
         if (!CanJump) return;
         _isGrounded = false;
+        AudioManager.Instance.Play("jump");
         _lastJumpTime = Time.time;
         softBodyComponent.SetSolid();
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);

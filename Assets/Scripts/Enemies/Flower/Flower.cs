@@ -32,6 +32,7 @@ public class Flower : MonoBehaviour
     private void SpawnDrop()
     {
         var drop = Instantiate(dropPrefab, dropSpawn.position, dropSpawn.rotation);
+        AudioManager.Instance.Play("Flowers_atack");
         drop.GetComponent<DropFlight>().Instantiate(dropSpawn.TransformDirection(Vector3.right).normalized);
     }
 

@@ -31,8 +31,8 @@ MonoBehaviour:
     loop: 1
   - name: Rock_fall
     type: 0
-    clip: {fileID: 8300000, guid: 4476acc293335c44f8d54ee791fa47be, type: 3}
-    loop: 0
+    clip: {fileID: 8300000, guid: e7d4813677f012b4d9adf7001d69e1db, type: 3}
+    loop: 1
   - name: Parrot_1
     type: 0
     clip: {fileID: 8300000, guid: 789d7bf236cb7624f80326cf83ae8a1a, type: 3}
@@ -69,11 +69,11 @@ MonoBehaviour:
     type: 0
     clip: {fileID: 8300000, guid: 217a75065677d434ea1615c7db84632c, type: 3}
     loop: 0
-  - name: Wood1
+  - name: Wood_1
     type: 0
     clip: {fileID: 8300000, guid: 3bcaa602e9c85484390c44cd3fee6f88, type: 3}
     loop: 0
-  - name: Wood2
+  - name: Wood_2
     type: 0
     clip: {fileID: 8300000, guid: 4d5ba86d2e99ead4ab65105f5a30fe39, type: 3}
     loop: 0
@@ -117,3 +117,11 @@ MonoBehaviour:
     type: 1
     clip: {fileID: 8300000, guid: 25bc3c59831ca3b43b5d3a24c0c18b17, type: 3}
     loop: 1
+  - name: L2_vulkan
+    type: 1
+    clip: {fileID: 8300000, guid: af58ec274fb40a24b9c3a4ce9beff6c6, type: 3}
+    loop: 1
+  - name: jump
+    type: 0
+    clip: {fileID: 8300000, guid: af93db6604834914696bd01d13f3f6fd, type: 3}
+    loop: 0

@@ -25,14 +25,15 @@ public class CutScenePanel : UIPanel
 
     private void ContinueButtonClicked()
     {
+        AudioManager.Instance.Play("ButtonClick");
         _index++;
+
         if (_index == _backgrounds.Count)
         {
             GameManager.Instance.FadeWithLoadScene(_nextSceneName);
             return;
         }
         
-        AudioManager.Instance.Play("ButtonClick");
         _imgObj.sprite = _backgrounds[_index];
     }
 
