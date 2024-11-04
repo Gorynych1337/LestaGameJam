@@ -1,5 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(SoftBodyComponent), typeof(Rigidbody2D))]
 public class PlayerComponent: MonoBehaviour
@@ -8,6 +10,8 @@ public class PlayerComponent: MonoBehaviour
     [SerializeField] private SoftBodyComponent softBodyComponent;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private FaceChanger faceChanger;
+    [SerializeField] private Image fader;
+
     
     [Header("Character Settings")]
     [SerializeField] private float health;
@@ -78,7 +82,11 @@ public class PlayerComponent: MonoBehaviour
     public void Die()
     {
         faceChanger.ChangeFace(FaceChanger.Faces.Death);
-        Debug.LogError("Die method not implemented");
+
+        DOTween.Sequence()
+            .Append(fader.DOFade(1, 1))
+            .AppendCallback(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex))
+            .SetLink(gameObject);
     }
     
     private void Respawn()
