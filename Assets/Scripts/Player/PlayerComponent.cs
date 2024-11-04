@@ -130,6 +130,8 @@ public class PlayerComponent: MonoBehaviour
     {
         if (!_isGrounded && rb.velocity.y < 0) faceChanger.ChangeFace(FaceChanger.Faces.Falling);
 
+        if (transform.position.y < -100) Die();
+
         if (!(Time.time - _lastJumpTime > 0.5f)) return;
         softBodyComponent.SetLiquid();
     }
