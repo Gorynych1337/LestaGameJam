@@ -14,21 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: MenuMusic
-    type: 0
+    type: 1
     clip: {fileID: 8300000, guid: 4dd018ce9f20f03499f8ff2e57eaf325, type: 3}
-    loop: 0
+    loop: 1
   - name: ButtonClick
     type: 0
     clip: {fileID: 8300000, guid: 7968026a70932c34dadadd2bd761f433, type: 3}
     loop: 0
   - name: Main_music
-    type: 0
+    type: 1
     clip: {fileID: 8300000, guid: 3880c5a888b94534a8c870d89065c0a0, type: 3}
-    loop: 0
+    loop: 1
   - name: Main_ambient
-    type: 0
+    type: 2
     clip: {fileID: 8300000, guid: 3880c5a888b94534a8c870d89065c0a0, type: 3}
-    loop: 0
+    loop: 1
   - name: Rock_fall
     type: 0
     clip: {fileID: 8300000, guid: 4476acc293335c44f8d54ee791fa47be, type: 3}
@@ -78,17 +78,17 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4d5ba86d2e99ead4ab65105f5a30fe39, type: 3}
     loop: 0
   - name: Level1_Part1
-    type: 0
+    type: 1
     clip: {fileID: 8300000, guid: 007532ff5d188734fb4830fbbe75de64, type: 3}
-    loop: 0
+    loop: 1
   - name: Birds_1
-    type: 0
+    type: 2
     clip: {fileID: 8300000, guid: 0520f85138137864fab5ff2fc7ac57db, type: 3}
-    loop: 0
+    loop: 1
   - name: Birds_2
-    type: 0
+    type: 2
     clip: {fileID: 8300000, guid: 73aa9a91d6c4358438fcc6b856299fe1, type: 3}
-    loop: 0
+    loop: 1
   - name: Fish_atack
     type: 0
     clip: {fileID: 8300000, guid: 808135ca63592744395e502ce2703cc2, type: 3}
@@ -98,14 +98,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: d7fef161b02396746ab258bb62e9374a, type: 3}
     loop: 0
   - name: Waterfall_osn
-    type: 0
+    type: 2
     clip: {fileID: 8300000, guid: 4138acbe5428a8944bb7349a9f890060, type: 3}
-    loop: 0
+    loop: 1
   - name: Wind_osn
-    type: 0
+    type: 2
     clip: {fileID: 8300000, guid: e2626533a9f5ef34b8675dc912ae296a, type: 3}
-    loop: 0
+    loop: 1
   - name: Birds_jungle
-    type: 0
+    type: 2
     clip: {fileID: 8300000, guid: 9716407d09ff2514f89c175dbff17227, type: 3}
-    loop: 0
+    loop: 1
