@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class DamageOnStay : MonoBehaviour
 {
-    [SerializeField] private float _damagePerTick;
+    [SerializeField] private float damage;
+    [SerializeField] private bool perTick;
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PlayerComponent target)) target.TakeDamage(_damagePerTick);
+        if (!collision.TryGetComponent(out PlayerComponent target)) return;
+        target.TakeDamage(damage, perTick);
     }
 }
