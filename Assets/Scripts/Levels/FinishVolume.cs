@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinishVolume : MonoBehaviour
 {
@@ -9,5 +10,6 @@ public class FinishVolume : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         GameManager.Instance.FinishLevel();
+        SceneManager.LoadScene(0);
     }
 }
