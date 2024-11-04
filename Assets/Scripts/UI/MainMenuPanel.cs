@@ -9,8 +9,10 @@ public class MainMenuPanel : UIPanel
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button exitButton;
+    [SerializeField] private Button creditsButton;
     [SerializeField] private LevelMenuPanel LevelMenuPanel;
     [SerializeField] private SettingsMenuPanel settingsMenuPanel;
+    [SerializeField] private CreditsPanel creditsPanel;
     [SerializeField] private LevelsConfig levelsConfig;
 
     private void Awake()
@@ -18,6 +20,14 @@ public class MainMenuPanel : UIPanel
         playButton.onClick.AddListener(PlayButtonClicked);
         settingsButton.onClick.AddListener(SettingsButtonClicked);
         exitButton.onClick.AddListener(ExitButtonClicked);
+        creditsButton.onClick.AddListener(CreditsButtonClicked);
+    }
+
+    private void CreditsButtonClicked()
+    {
+        AudioManager.Instance.Play("ButtonClick");
+        Hide();
+        creditsPanel.Show();
     }
 
     private void PlayButtonClicked()
