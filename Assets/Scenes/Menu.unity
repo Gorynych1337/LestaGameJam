@@ -10089,7 +10089,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0413\u0435\u0439\u043C\u0434\u0438\u0437\u0430\u0439\u043D\u0435\u0440\u044B:\tReyks\n\t\t\tSunRise\n\n\u0420\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u0438:\tGorynych_0\n\t\t\tbibo4k4\n\t\t\tVamiro\n\n\u0425\u0443\u0434\u043E\u0436\u043D\u0438\u043A\u0438:\tGrach\n\t\t\telis_uelsli\n\t\t\tsoybat\n\t\t\taveta\n\t\t\tTrevi"
+  m_text: "\u0413\u0435\u0439\u043C\u0434\u0438\u0437\u0430\u0439\u043D\u0435\u0440\u044B:\tReyks\n\t\t\tSunRise\n\n\u0420\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u0438:\tbibo4k4\n\t\t\tGorynych_0\n\t\t\tVamiro\n\n\u0425\u0443\u0434\u043E\u0436\u043D\u0438\u043A\u0438:\taveta\n\t\t\telis_uelsli\n\t\t\tGrach\n\t\t\tsoybat\n\t\t\tTrevi"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 129462c591a13be4986114ed255e96bb, type: 2}
   m_sharedMaterial: {fileID: -8698427785074020215, guid: 129462c591a13be4986114ed255e96bb, type: 2}
