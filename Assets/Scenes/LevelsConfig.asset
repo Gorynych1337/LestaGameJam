@@ -16,4 +16,4 @@ MonoBehaviour:
   - levelNumber: 1
     levelSceneName: Scene_1
   - levelNumber: 2
-    levelSceneName: 
+    levelSceneName: Scene2
