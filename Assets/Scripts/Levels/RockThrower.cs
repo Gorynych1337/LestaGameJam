@@ -5,24 +5,29 @@ using UnityEngine;
 
 public class RockThrower : MonoBehaviour
 {
+    [SerializeField] private float rockDelay;
+
     [SerializeField] private GameObject rockPrefab;
     [SerializeField] private Transform rockSpawner;
 
     private List<GameObject> rocks;
     private Queue<GameObject> rockQueue;
 
+    private float lastThrow;
+
     private void Awake()
     {
         rocks = new List<GameObject>();
         rockQueue = new Queue<GameObject>();
+
+        lastThrow = Time.time;
     }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.T))
-        {
-            Throw();
-        }
+        if (Time.time - rockDelay < lastThrow) return;
+        lastThrow = Time.time;
+        Throw();
     }
 
     private void Throw()
