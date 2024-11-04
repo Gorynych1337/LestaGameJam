@@ -121,7 +121,6 @@ public class PlayerComponent: MonoBehaviour
     private void Update()
     {
         if (!_isGrounded && rb.velocity.y < 0) faceChanger.ChangeFace(FaceChanger.Faces.Falling);
-        Debug.Log(rb.velocity.y);
 
         if (!(Time.time - _lastJumpTime > 0.5f)) return;
         softBodyComponent.SetLiquid();

@@ -276,9 +276,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 603985861
+  m_SortingLayer: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 9fae62520ca73fc4bab8c375977c741d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -578,11 +578,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   softBodyComponent: {fileID: 4504065045858239596}
   rb: {fileID: 6360722093253017193}
+  faceChanger: {fileID: 4794680640222118605}
   health: 100
   movementForce: 7
   jumpForce: 100
   jumpCooldown: 0.1
-  minHP: 0
+  minHP: 10
   maxHP: 200
   invulnerableTime: 1
 --- !u!114 &4504065045858239596
@@ -1220,9 +1221,9 @@ SpriteShapeRenderer:
   m_SortingOrder: 3
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_MaskInteraction: 0
-  m_ShapeTexture: {fileID: 2800000, guid: f417d295dfbe2d744ae7d54e53194962, type: 3}
+  m_ShapeTexture: {fileID: 2800000, guid: d01a0aa97b308b54a8b397b23821545c, type: 3}
   m_Sprites:
-  - {fileID: 21300000, guid: 7004cf229fae82a4fa67bbe425b7b2ec, type: 3}
+  - {fileID: 21300000, guid: 766698a2f3e199d49b99d83bfea574a0, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
@@ -1232,8 +1233,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: -0.022171497, y: -0.05784285, z: 0}
-    m_Extent: {x: 1.4341885, y: 1.5288961, z: 0}
+    m_Center: {x: -0.022167802, y: -0.057861686, z: 0}
+    m_Extent: {x: 1.2308643, y: 1.3255824, z: 0}
   m_SpriteSortPoint: 0
 --- !u!114 &4050088928003648213
 MonoBehaviour:
@@ -1346,7 +1347,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-  m_SpriteShape: {fileID: 11400000, guid: 68679df2933a80b4583e66e4c13a66c3, type: 2}
+  m_SpriteShape: {fileID: 11400000, guid: 1446e5802b3878248bfd37b2b9d68dd3, type: 2}
   m_FillPixelPerUnit: 100
   m_StretchTiling: 1
   m_SplineDetail: 16
