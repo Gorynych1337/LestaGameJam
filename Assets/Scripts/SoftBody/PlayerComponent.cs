@@ -25,8 +25,12 @@ public class PlayerComponent: MonoBehaviour
     private Inputs _input;
 
     private float _scaleMod;
+    private float _healthDiff;
 
     private bool CanJump => Time.time - _groundedTime > jumpCooldown && _isGrounded;
+    
+    [SerializeField] private float invulnerableTime = 1f;
+    private bool _isInvulnerable;
     
     private float Health
     {
@@ -40,6 +44,7 @@ public class PlayerComponent: MonoBehaviour
             }
             else
             {
+                _healthDiff = value - health;
                 health = value;
                 health = Mathf.Min(health, maxHP);
                 Resize();
@@ -49,6 +54,9 @@ public class PlayerComponent: MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (_isInvulnerable) return;
+        _isInvulnerable = true;
+        DOVirtual.DelayedCall(invulnerableTime, () => _isInvulnerable = false);
         Health -= damage;
     }
 
@@ -60,6 +68,7 @@ public class PlayerComponent: MonoBehaviour
     private void Resize()
     {
         transform.localScale = Vector3.one * health * _scaleMod / 100;
+        softBodyComponent.ResizeSpringDistance(Mathf.Abs(_healthDiff / 100));
     }
 
     public void Die()
