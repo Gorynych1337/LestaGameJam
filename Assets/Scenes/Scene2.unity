@@ -27975,6 +27975,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPlatform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2339554108664311585, guid: ff3634b03e438334b97e98653962c094, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 3201060574170769523, guid: ff3634b03e438334b97e98653962c094, type: 3}
       propertyPath: _loopTime
       value: 5
@@ -28327,6 +28331,10 @@ PrefabInstance:
     - target: {fileID: 2339554108664311585, guid: ff3634b03e438334b97e98653962c094, type: 3}
       propertyPath: m_Name
       value: CloudPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339554108664311585, guid: ff3634b03e438334b97e98653962c094, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 5652580139583161806, guid: ff3634b03e438334b97e98653962c094, type: 3}
       propertyPath: m_Sprite
@@ -32367,6 +32375,10 @@ PrefabInstance:
     - target: {fileID: 2339554108664311585, guid: ff3634b03e438334b97e98653962c094, type: 3}
       propertyPath: m_Name
       value: MovingPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339554108664311585, guid: ff3634b03e438334b97e98653962c094, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 5652580139583161806, guid: ff3634b03e438334b97e98653962c094, type: 3}
       propertyPath: m_Sprite
