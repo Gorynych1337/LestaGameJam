@@ -7,6 +7,7 @@ public class PlayerComponent: MonoBehaviour
     [Header("References")]
     [SerializeField] private SoftBodyComponent softBodyComponent;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private FaceChanger faceChanger;
     
     [Header("Character Settings")]
     [SerializeField] private float health;
@@ -16,6 +17,7 @@ public class PlayerComponent: MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpCooldown = 2f;
 
+    [Header("HP Settings")]
     [SerializeField] private float minHP;
     [SerializeField] private float maxHP;
 
@@ -58,6 +60,8 @@ public class PlayerComponent: MonoBehaviour
         _isInvulnerable = true;
         DOVirtual.DelayedCall(invulnerableTime, () => _isInvulnerable = false);
         Health -= damage;
+
+        faceChanger.ChangeFaceForTime(0.5f, FaceChanger.Faces.Damaged);
     }
 
     public void TakeHeal(float heal)
@@ -73,6 +77,7 @@ public class PlayerComponent: MonoBehaviour
 
     public void Die()
     {
+        faceChanger.ChangeFace(FaceChanger.Faces.Death);
         Debug.LogError("Die method not implemented");
     }
     
@@ -102,6 +107,7 @@ public class PlayerComponent: MonoBehaviour
         _lastJumpTime = Time.time;
         softBodyComponent.SetSolid();
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        faceChanger.ChangeFaceForTime(0.5f, FaceChanger.Faces.Jump);
     }
 
     private void FixedUpdate()
@@ -114,6 +120,9 @@ public class PlayerComponent: MonoBehaviour
 
     private void Update()
     {
+        if (!_isGrounded && rb.velocity.y < 0) faceChanger.ChangeFace(FaceChanger.Faces.Falling);
+        Debug.Log(rb.velocity.y);
+
         if (!(Time.time - _lastJumpTime > 0.5f)) return;
         softBodyComponent.SetLiquid();
     }
@@ -122,6 +131,7 @@ public class PlayerComponent: MonoBehaviour
     {
         if (!collision.transform.CompareTag("Ground")) return;
         _isGrounded = true;
+        faceChanger.ChangeFace();
         _groundedTime = Time.time;
         softBodyComponent.SetLiquid();
     }
