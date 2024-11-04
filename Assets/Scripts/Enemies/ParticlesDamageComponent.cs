@@ -10,7 +10,7 @@ public class ParticlesDamageComponent : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.TryGetComponent(out PlayerComponent target) && _isReady)
+        if (other.CompareTag("Player") && other.transform.parent.TryGetComponent(out PlayerComponent target) && _isReady)
             TakeDamage(target);
     }
 
